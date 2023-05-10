@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.util.Log;
 
+import com.imin.library.IminSDKManager;
 import com.imin.printerlib.IminPrintUtils;
 
 import org.json.JSONArray;
@@ -40,7 +41,8 @@ public class IminPrinter {
     public static final String setQrSize = "setQrSize";
     public static final String setQrCorrectionLevel = "setQrCorrectionLevel";
     public static final String setPageFormat = "setPageFormat";
-    public static final List<String> channelMethods = Arrays.asList(initPrinter,getPrinterStatus,printAndLineFeed,printAndFeedPaper,partialCut,setAlignment,setTextSize,setTextTypeface,setTextStyle,setTextLineSpacing,setTextWidth,printText,printColumnsText,setBarCodeHeight,setBarCodeContentPrintPos,printBarCode,setLeftMargin,printQrCode,setPageFormat,setQrSize,setQrCorrectionLevel);
+    public static final String openCashBox = "openCashBox";
+    public static final List<String> channelMethods = Arrays.asList(initPrinter,getPrinterStatus,printAndLineFeed,printAndFeedPaper,partialCut,setAlignment,setTextSize,setTextTypeface,setTextStyle,setTextLineSpacing,setTextWidth,printText,printColumnsText,setBarCodeHeight,setBarCodeContentPrintPos,printBarCode,setLeftMargin,printQrCode,setPageFormat,setQrSize,setQrCorrectionLevel,openCashBox);
 
 
     public void runSDkMethods(String method){
@@ -88,6 +90,9 @@ public class IminPrinter {
                 break;
             case setQrCorrectionLevel:
                 setQrCorrectionLevel();
+                break;
+            case openCashBox:
+                openCashBox();
                 break;
             default:
                 result.notImplemented();
@@ -240,6 +245,11 @@ public class IminPrinter {
     private void setQrCorrectionLevel() {
         int level = Objects.requireNonNull(call.argument("level"));
         iminPrintUtils.setQrCodeErrorCorrectionLev(level);
+        result.success(true);
+    }
+
+    private void openCashBox() {
+        IminSDKManager.opencashBox();
         result.success(true);
     }
 }

@@ -20,6 +20,7 @@ class ChannelMethods {
   static const String setQrSize = "setQrSize";
   static const String setQrCorrectionLevel = "setQrCorrectionLevel";
   static const String setPageFormat = "setPageFormat";
+  static const String openCashBox = "openCashBox";
 }
 
 

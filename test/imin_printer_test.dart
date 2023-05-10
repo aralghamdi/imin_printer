@@ -103,6 +103,12 @@ class MockIminPrinterPlatform
     // TODO: implement setQrSize
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> openCashBox() {
+    // TODO: implement openCashBox
+    throw UnimplementedError();
+  }
 }
 
 void main() {

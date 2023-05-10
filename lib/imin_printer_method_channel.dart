@@ -94,4 +94,9 @@ class MethodChannelIminPrinter extends IminPrinterPlatform {
   Future<void> setQrCorrectionLevel(int level) async {
     await methodChannel.invokeMethod<void>(ChannelMethods.setQrCorrectionLevel, {'level': level});
   }
+
+  @override
+  Future<void> openCashBox() async {
+    await methodChannel.invokeMethod<void>(ChannelMethods.openCashBox);
+  }
 }

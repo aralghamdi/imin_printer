@@ -88,4 +88,8 @@ abstract class IminPrinterPlatform extends PlatformInterface {
   Future<void> setQrCorrectionLevel(int level){
     throw UnimplementedError('setQrCorrectionLevel() has not been implemented.');
   }
+
+  Future<void> openCashBox(){
+    throw UnimplementedError('openCashBox() has not been implemented.');
+  }
 }
