@@ -1,5 +1,4 @@
 import 'package:imin_printer/imin_printer_platform_interface.dart';
-import 'package:imin_printer/src/printer_column.dart';
 
 import '../imin_printer.dart';
 
@@ -82,5 +81,19 @@ class IminPrinter {
 
   Future<void> printRow(List<PrinterColumn> columns) async {
     await IminPrinterPlatform.instance.printRow(columns);
+  }
+
+  Future<void> printQrCode(String data, PrinterAlignment alignment) async {
+    await IminPrinterPlatform.instance.printQrCode(data,alignment.index);
+  }
+
+  Future<void> setQrSize(int size) async {
+    assert(size >= 1 && size <= 13, "Qr size must be between 1 - 13");
+    await IminPrinterPlatform.instance.setQrSize(size);
+  }
+
+  Future<void> setQrCorrectionLevel(int level) async {
+    assert(level >= 48 && level <= 51, "QR correction Level must be between 48 - 51");
+    await IminPrinterPlatform.instance.setQrCorrectionLevel(level);
   }
 }

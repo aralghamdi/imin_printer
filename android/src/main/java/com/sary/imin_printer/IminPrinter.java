@@ -35,11 +35,12 @@ public class IminPrinter {
     public static final String setBarCodeHeight = "setBarCodeHeight";
     public static final String setBarCodeContentPrintPos = "setBarCodeContentPrintPos";
     public static final String printBarCode = "printBarCode";
-    public static final String setQrCodeErrorCorrectionLev = "setQrCodeErrorCorrectionLev";
     public static final String setLeftMargin = "setLeftMargin";
     public static final String printQrCode = "printQrCode";
+    public static final String setQrSize = "setQrSize";
+    public static final String setQrCorrectionLevel = "setQrCorrectionLevel";
     public static final String setPageFormat = "setPageFormat";
-    public static final List<String> channelMethods = Arrays.asList(initPrinter,getPrinterStatus,printAndLineFeed,printAndFeedPaper,partialCut,setAlignment,setTextSize,setTextTypeface,setTextStyle,setTextLineSpacing,setTextWidth,printText,printColumnsText,setBarCodeHeight,setBarCodeContentPrintPos,printBarCode,setQrCodeErrorCorrectionLev,setLeftMargin,printQrCode,setPageFormat);
+    public static final List<String> channelMethods = Arrays.asList(initPrinter,getPrinterStatus,printAndLineFeed,printAndFeedPaper,partialCut,setAlignment,setTextSize,setTextTypeface,setTextStyle,setTextLineSpacing,setTextWidth,printText,printColumnsText,setBarCodeHeight,setBarCodeContentPrintPos,printBarCode,setLeftMargin,printQrCode,setPageFormat,setQrSize,setQrCorrectionLevel);
 
 
     public void runSDkMethods(String method){
@@ -78,6 +79,15 @@ public class IminPrinter {
                 break;
             case printColumnsText:
                 printColumnsText();
+                break;
+            case printQrCode:
+                printQr();
+                break;
+            case setQrSize:
+                setQrSize();
+                break;
+            case setQrCorrectionLevel:
+                setQrCorrectionLevel();
                 break;
             default:
                 result.notImplemented();
@@ -211,6 +221,25 @@ public class IminPrinter {
         } catch (Exception err) {
             Log.d("imin_printer", err.getMessage());
         }
+        result.success(true);
+    }
+
+    private void printQr() {
+        String data = Objects.requireNonNull(call.argument("data"));
+        int alignment = Objects.requireNonNull(call.argument("alignment"));
+        iminPrintUtils.printQrCode(data, alignment);
+        result.success(true);
+    }
+
+    private void setQrSize() {
+        int size = Objects.requireNonNull(call.argument("size"));
+        iminPrintUtils.setQrCodeSize(size);
+        result.success(true);
+    }
+
+    private void setQrCorrectionLevel() {
+        int level = Objects.requireNonNull(call.argument("level"));
+        iminPrintUtils.setQrCodeErrorCorrectionLev(level);
         result.success(true);
     }
 }

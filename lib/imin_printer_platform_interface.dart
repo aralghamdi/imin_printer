@@ -74,6 +74,18 @@ abstract class IminPrinterPlatform extends PlatformInterface {
   }
 
   Future<void> printRow(List<PrinterColumn> columns){
-    throw UnimplementedError('printText() has not been implemented.');
+    throw UnimplementedError('printRow() has not been implemented.');
+  }
+
+  Future<void> printQrCode(String data, int alignment){
+    throw UnimplementedError('printQrCode() has not been implemented.');
+  }
+
+  Future<void> setQrSize(int size){
+    throw UnimplementedError('setQrSize() has not been implemented.');
+  }
+
+  Future<void> setQrCorrectionLevel(int level){
+    throw UnimplementedError('setQrCorrectionLevel() has not been implemented.');
   }
 }

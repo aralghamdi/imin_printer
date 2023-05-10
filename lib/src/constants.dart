@@ -15,9 +15,10 @@ class ChannelMethods {
   static const String setBarCodeHeight = "setBarCodeHeight";
   static const String setBarCodeContentPrintPos = "setBarCodeContentPrintPos";
   static const String printBarCode = "printBarCode";
-  static const String setQrCodeErrorCorrectionLev = "setQrCodeErrorCorrectionLev";
   static const String setLeftMargin = "setLeftMargin";
   static const String printQrCode = "printQrCode";
+  static const String setQrSize = "setQrSize";
+  static const String setQrCorrectionLevel = "setQrCorrectionLevel";
   static const String setPageFormat = "setPageFormat";
 }
 

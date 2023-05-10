@@ -79,4 +79,19 @@ class MethodChannelIminPrinter extends IminPrinterPlatform {
         columns.map<Map<String, String>>((PrinterColumn column) => column.toJson()));
       await methodChannel.invokeMethod<void>(ChannelMethods.printColumnsText, {'columns': json.encode(jsonCols)});
   }
+
+  @override
+  Future<void> printQrCode(String data, int alignment) async {
+    await methodChannel.invokeMethod<void>(ChannelMethods.printQrCode, {'data': data, "alignment": alignment});
+  }
+
+  @override
+  Future<void> setQrSize(int size) async {
+    await methodChannel.invokeMethod<void>(ChannelMethods.setQrSize, {'size': size});
+  }
+
+  @override
+  Future<void> setQrCorrectionLevel(int level) async {
+    await methodChannel.invokeMethod<void>(ChannelMethods.setQrCorrectionLevel, {'level': level});
+  }
 }

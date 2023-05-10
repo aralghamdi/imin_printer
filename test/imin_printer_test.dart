@@ -9,9 +9,6 @@ class MockIminPrinterPlatform
     implements IminPrinterPlatform {
 
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
-
-  @override
   Future<void> initPrinter() {
     // TODO: implement initPrinter
     throw UnimplementedError();
@@ -88,6 +85,24 @@ class MockIminPrinterPlatform
     // TODO: implement printRow
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> printQrCode(String data, int alignment) {
+    // TODO: implement printQrCode
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> setQrCorrectionLevel(int level) {
+    // TODO: implement setQrCorrectionLevel
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> setQrSize(int size) {
+    // TODO: implement setQrSize
+    throw UnimplementedError();
+  }
 }
 
 void main() {
@@ -97,11 +112,4 @@ void main() {
     expect(initialPlatform, isInstanceOf<MethodChannelIminPrinter>());
   });
 
-  test('getPlatformVersion', () async {
-    IminPrinter iminPrinterPlugin = IminPrinter();
-    MockIminPrinterPlatform fakePlatform = MockIminPrinterPlatform();
-    IminPrinterPlatform.instance = fakePlatform;
-
-    // expect(await iminPrinterPlugin.getPlatformVersion(), '42');
-  });
 }
