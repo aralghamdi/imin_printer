@@ -96,4 +96,8 @@ class IminPrinter {
     assert(level >= 48 && level <= 51, "QR correction Level must be between 48 - 51");
     await IminPrinterPlatform.instance.setQrCorrectionLevel(level);
   }
+
+  Future<void> openCashBox() async {
+    await IminPrinterPlatform.instance.openCashBox();
+  }
 }
